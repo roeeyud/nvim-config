@@ -5,7 +5,16 @@ lsp.on_attach(function(client, bufnr)
 end)
 
 -- (Optional) Configure lua language server for neovim
-require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+local lspconfig = require('lspconfig')
+lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
+lspconfig.eslint.setup({
+    on_attach = function(client, bufnr)
+        vim.api.nvim_create_autocmd("BufWritePost", {
+            command = "EslintFixAll",
+            pattern = { "*" },
+        })
+    end,
+})
 
 lsp.setup()
 
@@ -13,10 +22,13 @@ lsp.setup()
 local cmp = require('cmp')
 
 cmp.setup({
-  mapping = {
-    ['<CR>'] = cmp.mapping.confirm({select = false}),
-  }
+    mapping = {
+        ['<CR>'] = cmp.mapping.confirm({ select = false }),
+    }
 })
+
+vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>')
+vim.keymap.set('i', 'C-p', '<cmd>lua vim.lsp.buf.completion()<cr>')
 
 vim.api.nvim_create_autocmd("BufWritePost", {
     callback = function()
