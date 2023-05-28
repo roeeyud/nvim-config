@@ -14,6 +14,8 @@ require("zen-mode").setup({
         options = {}
     }
 })
-require("zen-mode").toggle()
 vim.opt.colorcolumn = "120"
-
+local wk = require("which-key") 
+wk.register({
+    ["<leader>zz"] = { "Toggle Zen Mode" },
+})
