@@ -1,4 +1,8 @@
-vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
+vim.g.undotree_WindowLayout = 2
+vim.keymap.set('n', '<leader>u', function() 
+    vim.cmd.UndotreeToggle()
+    vim.cmd.UndotreeFocus()
+end)
 local wk = require("which-key")
 wk.register({
     name = "undo",            -- optional group name
