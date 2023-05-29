@@ -76,4 +76,15 @@ return require('packer').startup(function(use)
     }
     use('nvim-tree/nvim-web-devicons')
     use "lukas-reineke/indent-blankline.nvim"
+    use({
+        "gbprod/cutlass.nvim",
+        config = function()
+            require("cutlass").setup({
+                -- your configuration comes here
+                -- or leave it empty to use the default settings
+                -- refer to the configuration section below
+            })
+        end
+    })
+    use("folke/trouble.nvim")
 end)
