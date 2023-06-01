@@ -9,6 +9,7 @@ wk.register({
 }, { prefix = "<leader>" })
 vim.api.nvim_set_option("clipboard", "unnamed")
 vim.keymap.set("n", "<leader>/", require("Comment.api").toggle.linewise.current)
+vim.keymap.set("i", "å", "<C-c>")
 wk.register({
     name = "code",             -- optional group name
     ["/"] = { "Comment" },     -- create a binding with label

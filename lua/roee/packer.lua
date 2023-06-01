@@ -16,7 +16,6 @@ return require('packer').startup(function(use)
         as = 'rose-pine',
     })
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
-    use('nvim-treesitter/nvim-treesitter')
     use('nvim-treesitter/playground')
     use('ThePrimeagen/harpoon')
     use('mbbill/undotree')
@@ -87,4 +86,5 @@ return require('packer').startup(function(use)
         end
     })
     use("folke/trouble.nvim")
+    use("nvim-tree/nvim-tree.lua")
 end)
