@@ -29,9 +29,13 @@ cmp.setup({
 
 vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>')
 vim.keymap.set('i', 'C-p', '<cmd>lua vim.lsp.buf.completion()<cr>')
-
-vim.api.nvim_create_autocmd("BufWritePost", {
-    callback = function()
-        vim.lsp.buf.format()
-    end
+vim.keymap.set('n', '<leader>q', function() vim.lsp.buf.format() end)
+local wk = require("which-key")
+wk.register({
+    ["<leader>q"] = { "Format file" }, -- special label to hide it in the popup
 })
+-- vim.api.nvim_create_autocmd("BufWritePost", {
+-- callback = function()
+-- vim.lsp.buf.format()
+-- end
+-- })
